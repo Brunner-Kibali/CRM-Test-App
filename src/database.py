@@ -33,6 +33,7 @@ class Database:
             # self.data = xmltodict.parse(handle.read())["root"]
             # print(self.data)
 
+
     def balance(self, acct_id):
         """
         Determines the customer balance by finding the difference between
@@ -45,7 +46,34 @@ class Database:
         acct = self.data.get(acct_id)
         if acct:
             bal = float(acct["due"]) - float(acct["paid"])
+
+            # Style added in module 4
             return f"{bal:.2f} USD"
+
+            # Style added in module 3
             # return f"$ {bal:.2f}"
+
+            # Original style in module 2
             # return int(acct["due"]) - int(acct["paid"])
+
+        return None
+
+
+    def owes_money_stub(self, acct_id):
+        """
+        Not yet implemented (included for reference only)
+        """
+        pass
+
+
+    def owes_money(self, acct_id):
+        """
+        Returns true if the account holder owes us money. Returns
+        false if they are up to date on payments or have credit
+        from a past overpayment.
+        """
+        acct = self.data.get(acct_id)
+        if acct:
+            return int(acct["due"]) - int(acct["paid"]) > 0
+
         return None
