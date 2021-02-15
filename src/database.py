@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import json
 
 """
 Author: Nick Russo
@@ -22,7 +23,6 @@ class Database:
 
         # Open the specified database file for reading and perform loading
         with open(path, "r") as handle:
-            import json
             self.data = json.load(handle)
 
             # ALTERNATIVE IMPLEMENTATIONS: Using YAML or XML to load data
@@ -32,7 +32,6 @@ class Database:
             # import xmltodict
             # self.data = xmltodict.parse(handle.read())["root"]
             # print(self.data)
-
 
     def balance(self, acct_id):
         """
@@ -58,13 +57,11 @@ class Database:
 
         return None
 
-
     def owes_money_stub(self, acct_id):
         """
         Not yet implemented (included for reference only)
         """
         pass
-
 
     def owes_money(self, acct_id):
         """
